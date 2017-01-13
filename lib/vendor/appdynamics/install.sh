@@ -26,7 +26,7 @@ then
   APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY=$(echo "${VCAP_SERVICES-}" | $JQ --raw-output '.['\""$key"\"'][0] | .credentials | .["account-access-key"] ')
   APPDYNAMICS_AGENT_APPLICATION_NAME=$(echo "${VCAP_APPLICATION-}" | $JQ --raw-output .application_name)
   APPDYNAMICS_AGENT_TIER_NAME=$(echo "${VCAP_APPLICATION-}" | $JQ --raw-output .application_name)
-  APPDYNAMICS_AGENT_NODE_NAME=$(echo "${VCAP_APPLICATION-}" | $JQ --raw-output .application_name)
+  APPDYNAMICS_AGENT_NODE_NAME=$(echo "${VCAP_APPLICATION-}" | $JQ --raw-output .instance_id)
 
   if [ ! -z "${APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY-}" ];
   then
